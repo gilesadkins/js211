@@ -91,6 +91,29 @@ if (typeof describe === 'function') {
       assert.equal(rockPaperScissors('rock ', 'sCiSsOrs'), "Hand one wins!");
     });
   });
+
+  //additional test for rps
+
+  describe('RPS unit test assignment')
+
+  it('should handle bad inputs', function(){
+    let actual = rockPaperScissors("Boot","Roach");
+    let expected = "Boot";
+    assert.equal(actual, expected)
+  })
+
+  it('should handle bad inputs', function(){
+    let actual = rockPaperScissors('private parts','other private parts');
+    let expected = "Watch your mouth";
+    assert.equal(actual, expected)
+  })
+
+  it('should handle Spanish', function(){
+    let actual = rockPaperScissors('Piedra','Papel');
+    let expected = "El papel vence al rock. ¡El papel gana!";
+    assert.equal(actual, expected)
+  })
+
 } else {
 
   // always returns ask the user for another input
