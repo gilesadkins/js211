@@ -10,12 +10,51 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-
-const pigLatin = (word) => {
-
-  // Your code here
-
+let smallestNonNegative = function(num1, num2) {
+  if (num1 < 0 && num2 < 0) {
+    return num1
+  } else if (num1 < 0 || num2 < 0) {
+    if (num1 >= 0) {
+      return num1
+    } else {
+      return num2
+    }
+  } else {
+    if(num1 < num2) {
+      return num1
+    } else {
+      return num2}
+  }
 }
+
+const pigLatin = (input) => {
+  let word = input.replace(/\s+/g, '').toLowerCase();
+  let indexa = word.indexOf('a');
+  let indexe = word.indexOf('e');
+  let indexi = word.indexOf('i');
+  let indexo = word.indexOf('o');
+  let indexu = word.indexOf('u');
+  
+  let arrOfIndex = [indexa, indexe, indexi, indexo, indexu]; 
+  
+  let vowelIndex = -1;
+    
+  for (let i = 0; i < arrOfIndex.length; i++) { 
+    vowelIndex = smallestNonNegative(vowelIndex, arrOfIndex[i])
+  }
+
+  let part1 = word.substring(0, vowelIndex);
+  let part2 = word.substring(vowelIndex);
+
+  if(vowelIndex == 0) {
+    return word + "yay"
+  } else if(vowelIndex > 0){
+    return part2 + part1 + "ay";
+  } else {
+    return word + "ay"
+  }
+}
+
 
 // the first function called in the program to get an input from the user
 // to run the function use the command: node main.js
@@ -55,17 +94,3 @@ if (typeof describe === 'function') {
   getPrompt();
 
 }
-
-
-
-
-
-
-// **********
-//   HINTS
-// **********
-
-// break your code into pieces and focus on one piece at a time...
-// 1. if word begins with a vowel send to one function: adds "yay"
-// 2. if word begins in with a consonant send to another function: splices off beginning, returns word with new ending.
-// 3. if multiple words, create array of words, loop over them, sending them to different functions and creating a new array with the new words.

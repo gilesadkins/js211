@@ -37,14 +37,6 @@ if (num1 < 0 && num2 < 0) {
 }
 }
 
-// console.log(smallestNonNegative(a, e))
-// console.log(smallestNonNegative(e, o))
-// console.log(smallestNonNegative(a, i))
-
-let word1 = "bobcat";
-let word2 = "meow";
-let word3 = "elephant";
-let word4 = 'TskTsk';
 
 let indexOfFirstVowel = function(word){
   let indexa = word.indexOf('a');
@@ -53,20 +45,17 @@ let indexOfFirstVowel = function(word){
   let indexo = word.indexOf('o');
   let indexu = word.indexOf('u');
   let arrOfIndex = [indexa, indexe, indexi, indexo, indexu];
+ 
   let vowelIndex = -1;
   
   for (i = 0; i < arrOfIndex.length; i++) { 
     vowelIndex = smallestNonNegative(vowelIndex, arrOfIndex[i])
   }
-  return vowelIndex;
+  return console.log(vowelIndex);
+  
 }
 
-console.log(indexOfFirstVowel(word1))
-console.log(indexOfFirstVowel(word2))
-console.log(indexOfFirstVowel(word3))
-console.log(indexOfFirstVowel(word4))
-
-
+indexOfFirstVowel("banana")
 
 
 let wordsplit = "browny";
