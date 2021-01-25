@@ -114,6 +114,18 @@ if (typeof describe === 'function') {
     assert.equal(actual, expected)
   })
 
+  it('should handle 0 in rock', function(){
+    let actual = rockPaperScissors('r0ck','paper');
+    let expected = "Paper beats Rock!";
+    assert.equal(actual, expected)
+  })
+
+  it('should handle no input', function(){
+    let actual = rockPaperScissors('','Paper');
+    let expected = "Player one must have a valid input";
+    assert.equal(actual, expected)
+  })
+
 } else {
 
   // always returns ask the user for another input
