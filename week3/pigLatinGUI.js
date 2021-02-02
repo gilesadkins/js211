@@ -48,17 +48,15 @@ const pigLatin = (word) => {
 
 
 let translate = function () {
-   let inputBox = document.getElementById('input'); 
-   let input = inputBox.value;
-   let pigWord = (pigLatin(input))
-   let output = document.createElement('p');
-   let text = document.createTextNode(pigWord);
-   document.body.appendChild(output);
-   output.appendChild(text);
+  let inputBox = document.getElementById('input'); 
+  let input = inputBox.value;
+  let pigWord = (pigLatin(input))
+  let output = document.createElement('p');
+  let text = document.createTextNode(pigWord);
+  document.body.appendChild(output);
+  output.appendChild(text);
 }
 
 
 let button = document.getElementById("inputButton");
 button.addEventListener('click', translate)
-
-

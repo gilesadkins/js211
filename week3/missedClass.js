@@ -20,47 +20,66 @@
 //  }
 // }
 
- 
+
 //  let test1 = []; //null
 //  let test2 = undefined; //null
 //  let test3 = [122,333,4456,11221,456,223334,1112,4567,24,1,223,23342,3340] //2233456
 //  console.log(largest(test3))
 
+/**
+ * objects could be strings
+ * they can be added to arrays 
+ * they have keys and values
+ * they can have any data type including other objects
+ */
+
+let myFriendName = 'John';
+
+let myFriendAge = '1234 Main St, Austin, Texas, 78704';
 
 
- let boardTest1 = [
-  ['X', 'X', 'X'],
-  [' ', ' ', ' '],
-  [' ', ' ', ' ']
+let friends = [{
+  name: 'Jenny ',
+  age: 39,
+  address: '144 Congress Ave, Austin, Texas, 78704',
+  isMale: false,
+  bestFriend: true
+},
+{
+  name: 'John',
+  age: 12,
+  address: '1233 Main St, Austin, Texas, 78704',
+  isMale: true,
+  bestFriend: false
+}
 ];
 
-let boardTest2 = [
-  ['X', 'O', 'X'],
-  ['O', 'X', 'O'],
-  ['O', 'O', 'O']
-];
 
-let boardTest3 = [
-  [' ', ' ', ' '],
-  ['X', 'X', 'X'],
-  [' ', ' ', ' ']
-];
+let fruit = [{name: 'apple', color: ["red", "green", "yellow"],properties: ["juicy",'tart', 'sandy','crunchy']},{name: "banana", color: ["yellow","green", "black"], properties: ["squishy"]},{name: "orange", color: ["orange"], properties: ["sour"]},{name: "grape", color: ["green", "red", "black", "indigo"],properties:['seedless','juicy', 'boozy']}]
 
-
-const verticalWin = (board) => {
-  if (board[0] == ['X', 'X', 'X']) {
-    return 'Player X Wins'
-  } else if (board[0] == ['O', "O", "O"]) {
-    return "Player O Wins"
-  } else if (board[1] == ['X', 'X', 'X']) {
-    return 'Player X Wins'
-  } else if (board[1] == ['O', "O", "O"]) {
-    return "Player O Wins"
-  } else if (board[2] == ['X', 'X', 'X']) {
-    return 'Player X Wins'
-  } else if (board[2] == ['O', "O", "O"]) {
-    return "Player O Wins"
-  }
+for(let i = 0; i < friends.length; i++){
+let text = `hi ${friends[i].name}, please text me when you get this.`;
+console.log(text)
 }
 
-console.log(verticalWin(boardTest2))
+for(let i = 0; i < fruit.length; i++){
+let sentence = `An ${fruit[i].name} is an awesome fruit that can be found in ${fruit[i].color.length}`;
+if(fruit[i].color.length > 1) {
+  sentence += ' colors. '
+} else {
+  sentence += ' color. '
+}
+
+let propertiesString;
+if(fruit[i].properties.length>1){
+  let lastProperty = fruit[i].properties.pop();
+  propertiesString = fruit[i].properties.join(", ");
+  propertiesString = propertiesString+" and "+lastProperty;
+} else{
+  propertiesString = 'just '+fruit[i].properties[0];
+}
+
+sentence += `They also feel ${propertiesString}.`
+
+console.log(sentence)
+}
