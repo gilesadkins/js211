@@ -22,34 +22,59 @@ let jobs = {
 }
 
 class CrewMember{
-  constructor(name, title, assignedVehicle){
+  constructor(name, title){
     this.title = title
     this.name = name
-    this.assignVehicle = assignedVehicle
+    this.assignedVehicle;
   }
   assignVehicle(vehicle){
-    this.assignedVehicle = vehicle;
-    vehicle.assignedCrew.push(this.title);
+    if(!this.assignedVehicle){
+
+      this.assignedVehicle = vehicle.name;
+      vehicle.crewOnBoard.push(this.title);
+
+    } else {
+
+      console.log(`${this.name} is already assigned a vehicle`);
+
+    }
   }
 }
 
 class Vehicle{
-  constructor(type, name, ){
-    this.type = type;
+  constructor(name, type){
     this.name = name;
-    this.assignedCrew = [];
+    this.type = type;
+    this.crewOnBoard = [];
   }
-  isReady(type, title){
-    //returns true if vehicle is ready to go
-    //ready to go IF there is the correct crew member on board vehicle
+
+  isReady(){
+    for(let i = 0; i < this.crewOnBoard.length; i++){
+      if(jobs[this.crewOnBoard[i]] == this.type){
+        console.log(`READY`)
+        return true;
+      }
+    }
+  return false
+    }
+
   }
-}
 
-let plane1 = new Vehicle();
-let plane2 = new Vehicle();
 
-let train1 = new Vehicle();
-let bus1 = new Vehicle();
+let plane1 = new Vehicle("Big Bertha", "Plane");
+let plane2 = new Vehicle("Tiny Tin", "Plane");
 
-let c1 = new CrewMember();
-let c2 = new CrewMember();
+let train1 = new Vehicle("Thomas", "Train");
+let bus1 = new Vehicle("Big Red", "Bus");
+
+let c1 = new CrewMember("John", "Pilot");
+let c2 = new CrewMember("MadMax", "Engineer");
+
+
+console.log(plane1.isReady()) // false
+
+c1.assignVehicle(plane2)
+console.log(plane2.isReady()) // true
+
+c2.assignVehicle(bus1)
+console.log(bus1.isReady()) // false
