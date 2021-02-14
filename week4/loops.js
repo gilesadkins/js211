@@ -9,10 +9,6 @@ do { i = i + 1;
 } while (i < 1000)
 
 // Create an object (with keys and values) called person with the following data:
-// firstName: "Jane",
-// lastName: "Doe",
-// birthDate: "Jan 5, 1925",
-// gender: "female"
 
 const person = {
   firstName: 'Jane',
