@@ -79,7 +79,7 @@ const mastermind = (guess) => {
     board.push(guess);
   }
   
-  if(board.length > 9){
+  if(board.length == 10){
     console.log(`GAME OVER`)
     board = [];
     solution = "";
