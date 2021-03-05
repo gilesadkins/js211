@@ -26,19 +26,84 @@ The constructor should take in the following input:
 amount - The amount on the transaction
 payee - The payee or description on the transaction
 NOTE: The date is not passed into the constructor. The constructor should set the date to be the current date automatically.
-
-
-
-
-
  */
 
-  let account1 = new BankAccount('john', '2084849')
-  //cannot charge without a balance
-  //new acct should have a 0 balance
-  console.log(account1.balance()) //0
+class BankAccount{
+  constructor(accountNumber, owner) {
+  this.accountNumber = accountNumber;
+  this.owner = owner;
+  this.transactions = [];
+  }
 
-  account1.deposit(100)
-  // log should be 100 
-  account1.charge(20)
-  //log should be 80
+  balance(){
+    let total = 0;
+    for(let i = 0; i < this.transactions.length; i++){
+      total = total + this.transactions[i].amount;
+    }
+    return total;
+  }
+
+  deposit(amt){
+  if(amt > 0){
+    let deposit = new Transaction(amt);
+    this.transactions.push(deposit)
+  } else {
+    console.log(`Must deposit a positive number`)
+  }
+  }
+  charge(amount, payee){
+    if(this.balance() > amount){
+      amount = amount * -1;
+      let charge = new Transaction(amount, payee)
+      this.transactions.push(charge);
+    } else{
+      console.log(`Not enough funds.`)
+    }
+  }
+}
+
+
+class Transaction{
+  constructor(amount, payee){
+    this.date = new Date();
+    this.amount = amount;
+    this.payee = payee;
+  }
+}
+
+
+
+
+let account1 = new BankAccount("John Doe", "91039423")
+
+// new account should have a zero balance
+console.log(account1.balance()); // 0
+
+// attempt to charge $10 at Target
+account1.charge(10, "Target");
+
+// cannot charge to the account if the balance is 0
+console.log(account1.balance()); // 0
+
+// transaction should not have gone trhough
+console.log(account1.transactions.length); // 0
+
+// deposit $100
+account1.deposit(100);
+
+// charge $20
+account1.charge(20, "Freebirds");
+console.log(account1.balance()); // 80
+
+// cannot overcharge
+account1.charge(1000, "Diamonds Direct");
+console.log(account1.balance()); // 80
+
+// can issue refunds
+account1.charge(-15, "Target");
+console.log(account1.balance()); // 95
+
+// should not be able to deposit negative money
+account1.deposit(-10);
+console.log(account1.balance()); // 95
+
