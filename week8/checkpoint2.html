@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  input{
+    margin: 4px;
+  }
+  h3 {
+    border-bottom: 1px solid black;
+  }
+  .flex {
+    display: flex; 
+  }
+  div {
+    margin: 5px;
+    padding: 4px;
+  }
+  .teamsWrapper { 
+    display: flex;
+    height: 70px;
+    border: none;
+  }
+  
+</style>
+<body>
+  <h3>Input players who signed up for tryouts below.</h3>
+
+  <input type="text" id="name" placeholder="Insert name here.">
+  <input type="text" id="age" placeholder="Insert age here.">
+  <button id="signUpButton">Submit</button>
+
+
+  <h3>Players trying out.</h3>
+  <div id="signedUpPlayers" class="flex">
+  </div>
+  <h3>League Players.</h3>
+  <div id="leaguePlayers">
+  </div>
+  <div class="teamsWrapper">
+    <div id='blueTeamDiv'>
+      <h3>Blue Team</h3>
+    </div>
+    <div id='redTeamDiv'>
+      <h3>Red Team</h3>
+    </div>
+  </div>
+</body>
+<script src="./checkpoint2.js"></script>
+</html>
